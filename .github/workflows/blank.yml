@@ -12,18 +12,21 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      path: repo
 
     - name: Sync files to Wiki.git
       run: |
         # Replace 'path/to/wiki.git' with the actual path to your Wiki.git repository
         WIKI_PATH=https://github.com/lcxznpy/AWW.wiki.git
-        COMMIT_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
+        # COMMIT_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
         git clone https://github.com/lcxznpy/AWW.wiki.git
-        for file in $COMMIT_FILES; do
-          cp -f "$file" "AWW.wiki/$file"
-        done
-
-        cd  AWW.wiki/$file
+        # for file in $COMMIT_FILES; do
+        #   cp -f "$file" "AWW.wiki/$file"
+        # done
+        
+        cd  AWW.wiki
+        rm -rf AWW.wiki/*.md
+        cp ../repo/*md /AWW.wiki
         git add .
         git commit -m "Sync changes from main repository"
         git push origin main
