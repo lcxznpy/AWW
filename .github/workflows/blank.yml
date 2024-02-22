@@ -1,0 +1,31 @@
+name: Sync Wiki on Commit
+
+on:
+  push:
+    paths:
+      - '**/*.md'
+
+jobs:
+  sync-wiki:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Sync files to Wiki.git
+      run: |
+        # Replace 'path/to/wiki.git' with the actual path to your Wiki.git repository
+        WIKI_PATH=https://github.com/lcxznpy/AWW.wiki.git
+        COMMIT_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
+        git clone https://github.com/lcxznpy/AWW.wiki.git
+        for file in $COMMIT_FILES; do
+          cp -f "$file" "AWW.wiki/$file"
+        done
+
+        cd  AWW.wiki/$file
+        git add .
+        git commit -m "Sync changes from main repository"
+        git push origin main
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN_ACTION }}
