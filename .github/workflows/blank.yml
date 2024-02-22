@@ -27,11 +27,11 @@ jobs:
         #   cp -f "$file" "AWW.wiki/$file"
         # done
         
-        cd  AWW.wiki
+        cd  /AWW.wiki
         ls -la
         pwd
-        rm -rf AWW.wiki/*.md
-        cp ../repo/*md /AWW.wiki
+        rm -rf *.md
+        cp ../repo/*md ./
         ls -la
         pwd
         git add .
