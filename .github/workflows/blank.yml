@@ -45,6 +45,6 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.TOKEN_ACTION }}
-        repository: lcxznpy/AWW.wiki
+        repository: lcxznpy/AWW/wiki
         directory: ./AWW.wiki
         force: true
