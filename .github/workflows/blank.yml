@@ -34,6 +34,8 @@ jobs:
         cp ../repo/*md ./
         ls -la
         pwd
+        git config --global user.email "github@robot.com"
+        git config --global user.name "github robot"
         git add .
         git commit -m "Sync changes from main repository"
         git push origin main
