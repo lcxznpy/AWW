@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-      path: repo
+      path: "repo"
 
     - name: Sync files to Wiki.git
       run: |
