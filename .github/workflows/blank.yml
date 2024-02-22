@@ -21,13 +21,19 @@ jobs:
         WIKI_PATH=https://github.com/lcxznpy/AWW.wiki.git
         # COMMIT_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
         git clone https://github.com/lcxznpy/AWW.wiki.git
+        ls -la
+        pwd
         # for file in $COMMIT_FILES; do
         #   cp -f "$file" "AWW.wiki/$file"
         # done
         
         cd  AWW.wiki
+        ls -la
+        pwd
         rm -rf AWW.wiki/*.md
         cp ../repo/*md /AWW.wiki
+        ls -la
+        pwd
         git add .
         git commit -m "Sync changes from main repository"
         git push origin main
