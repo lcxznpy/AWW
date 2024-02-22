@@ -27,7 +27,7 @@ jobs:
         #   cp -f "$file" "AWW.wiki/$file"
         # done
         
-        cd  /AWW.wiki
+        cd  ${{ github.workspace }}/AWW.wiki
         ls -la
         pwd
         rm -rf *.md
