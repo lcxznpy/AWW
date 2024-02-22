@@ -38,6 +38,13 @@ jobs:
         git config --global user.name "github robot"
         git add .
         git commit -m "Sync changes from main repository"
-        git push origin main
-      env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN_ACTION }}
+      #   git push origin main
+      # env:
+      #   GITHUB_TOKEN: ${{ secrets.TOKEN_ACTION }}
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.TOKEN_ACTION }}
+        repository: lcxznpy/AWW.wiki
+        directory: ./AWW.wiki
+        force: true
